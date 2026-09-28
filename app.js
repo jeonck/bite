@@ -47,6 +47,8 @@ function reveal() {
 
 function speak(text) {
   if (!('speechSynthesis' in window)) return;
+  // 모바일 브라우저는 이전 발화가 큐에 걸린 채로 남아 다음 재생을 막는 경우가 많아, 매번 비워주고 시작한다.
+  speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
   // Chrome/Edge에만 있는 음성이라, 없으면 기본 en-US 음성으로 자동 대체됨.
