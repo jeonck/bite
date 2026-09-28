@@ -35,6 +35,7 @@ function reveal() {
   if (revealed) return;
   const w = todayWords[idx];
   document.getElementById('cat').textContent = w.category;
+  document.getElementById('meaning').textContent = `(${w.meaning})`;
   document.getElementById('pron').textContent = w.pron;
   document.getElementById('example').textContent = w.example;
   detailEl.hidden = false;
