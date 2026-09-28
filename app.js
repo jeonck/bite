@@ -37,7 +37,8 @@ function reveal() {
   document.getElementById('cat').textContent = w.category;
   document.getElementById('meaning').textContent = `(${w.meaning})`;
   document.getElementById('pron').textContent = w.pron;
-  document.getElementById('example').textContent = `${w.example} (${w.exampleMeaning})`;
+  document.getElementById('example').textContent = w.example;
+  document.getElementById('exampleMeaning').textContent = `(${w.exampleMeaning})`;
   detailEl.hidden = false;
   nextBtn.hidden = false;
   revealed = true;
