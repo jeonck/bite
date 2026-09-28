@@ -1,11 +1,11 @@
 // UI 전용 — 로직은 logic.js, 단어 DB는 words.js.
 const state = loadState();
-const todayWords = pickTodayWords(state, WORD_DB);
+let todayWords = pickTodayWords(state, WORD_DB);
 let idx = 0;
 let revealed = false;
 let shownAt = Date.now();
-const clickedIds = [];
-const sessionStart = Date.now();
+let clickedIds = [];
+let sessionStart = Date.now();
 
 const cardEl = document.getElementById('card');
 const phraseEl = document.getElementById('phrase');
@@ -17,6 +17,7 @@ const progressEl = document.getElementById('progress');
 const streakEl = document.getElementById('streak');
 const doneScreen = document.getElementById('doneScreen');
 const sessionScreen = document.getElementById('sessionScreen');
+const moreBtn = document.getElementById('moreBtn');
 
 streakEl.textContent = state.streak > 0 ? `🔥 ${state.streak}일 연속` : '';
 
@@ -82,6 +83,15 @@ nextBtn.addEventListener('click', (e) => {
 skipBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   advance();
+});
+moreBtn.addEventListener('click', () => {
+  todayWords = pickTodayWords(state, WORD_DB);
+  idx = 0;
+  clickedIds = [];
+  sessionStart = Date.now();
+  doneScreen.hidden = true;
+  sessionScreen.hidden = false;
+  render();
 });
 
 render();
