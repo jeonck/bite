@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>출근길 영어 한마디 — 오늘의 표현 3개</title>
+<meta name="description" content="회원가입 없이 매일 비즈니스 영어 표현 3개만. 1분 안에 끝나는 저관여 학습.">
+<link rel="canonical" href="https://bite.metacog.co.kr/">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7930181419139524" crossorigin="anonymous"></script>
+
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+    background: #f7f7fa; color: #1a1a1a;
+  }
+  header { width: 100%; max-width: 480px; padding: 12px 16px 0; text-align: center; }
+  h1 { font-size: 15px; color: #666; font-weight: 500; margin: 4px 0; }
+  .ad-slot { width: 100%; max-width: 480px; min-height: 50px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 12px; }
+  main { width: 100%; max-width: 480px; flex: 1; display: flex; flex-direction: column; align-items: center; padding: 24px 16px; }
+  #progress { color: #999; font-size: 13px; margin-bottom: 8px; }
+  #streak { color: #e8590c; font-size: 13px; margin-bottom: 16px; }
+  #card {
+    width: 100%; background: #fff; border-radius: 16px; padding: 40px 24px; text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06); cursor: pointer; min-height: 160px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  }
+  #phrase { font-size: 22px; font-weight: 600; line-height: 1.4; }
+  #detail { display: flex; flex-direction: column; gap: 8px; color: #555; font-size: 15px; }
+  #detail .cat { display: inline-block; font-size: 12px; color: #888; background: #f0f0f3; border-radius: 999px; padding: 2px 10px; margin: 0 auto; }
+  #hint { color: #aaa; font-size: 13px; margin-top: 12px; }
+  .actions { display: flex; gap: 10px; margin-top: 20px; width: 100%; }
+  button { font-size: 15px; padding: 12px 20px; border-radius: 10px; border: none; cursor: pointer; }
+  #nextBtn { flex: 1; background: #1a1a1a; color: #fff; }
+  #skipBtn { background: #eee; color: #777; }
+  #speakBtn { background: #eef2ff; color: #3b5bdb; }
+  #doneScreen { text-align: center; padding: 40px 16px; }
+  #doneScreen h2 { margin-bottom: 8px; }
+  footer { width: 100%; max-width: 480px; padding: 16px; text-align: center; font-size: 12px; color: #bbb; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>출근길 영어 한마디</h1>
+</header>
+
+<div class="ad-slot" id="ad-top"><!-- 상단 배너 광고 자리 --></div>
+
+<main>
+  <section id="sessionScreen">
+    <div id="progress"></div>
+    <div id="streak"></div>
+    <div id="card">
+      <div id="phrase"></div>
+      <div id="detail" hidden>
+        <span class="cat" id="cat"></span>
+        <div id="pron"></div>
+        <div id="example"></div>
+        <button id="speakBtn" type="button">🔊 발음 듣기</button>
+      </div>
+    </div>
+    <div id="hint">탭해서 뜻 보기</div>
+    <div class="actions">
+      <button id="skipBtn" type="button">건너뛰기</button>
+      <button id="nextBtn" type="button" hidden>다음</button>
+    </div>
+  </section>
+
+  <section id="doneScreen" hidden>
+    <h2>오늘의 3개, 끝!</h2>
+    <p>🔥 <span id="doneStreak"></span>일 연속 방문 중</p>
+    <p>내일 또 3개가 기다리고 있어요.</p>
+  </section>
+
+  <div class="ad-slot" id="ad-bottom"><!-- 세션 종료 후 하단 광고 자리 --></div>
+</main>
+
+<footer>회원가입 없이, 브라우저에만 기록됩니다.</footer>
+
+<script src="words.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
