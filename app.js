@@ -54,8 +54,29 @@ function speak(text) {
   // Chrome/Edge에만 있는 음성이라, 없으면 기본 en-US 음성으로 자동 대체됨.
   const voice = speechSynthesis.getVoices().find((v) => v.name === 'Google US English');
   if (voice) u.voice = voice;
+  if (DEBUG) {
+    const s = speechSynthesis;
+    debugLog(`▶ "${text}" voice=${voice ? voice.name : '(default)'} voices=${s.getVoices().length} speaking=${s.speaking} pending=${s.pending} paused=${s.paused}`);
+    u.onstart = () => debugLog('  start');
+    u.onend = () => debugLog('  end');
+    u.onerror = (e) => debugLog(`  error: ${e.error}`);
+  }
   speechSynthesis.speak(u);
 }
+
+// ?debug=1 일 때만 화면 하단에 TTS 상태 로그 표시 (모바일 원인 확인용, 확인 후 제거 예정)
+const DEBUG = new URLSearchParams(location.search).has('debug');
+function debugLog(msg) {
+  let el = document.getElementById('debugLog');
+  if (!el) {
+    el = document.createElement('pre');
+    el.id = 'debugLog';
+    el.style.cssText = 'font-size:11px;white-space:pre-wrap;text-align:left;width:100%;max-width:480px;padding:8px 16px;color:#555';
+    document.body.appendChild(el);
+  }
+  el.textContent += `${msg}\n`;
+}
+if (DEBUG) debugLog(navigator.userAgent);
 // 음성 목록은 비동기로 로드되므로 미리 한 번 트리거해둔다(Chrome 계열).
 if ('speechSynthesis' in window) speechSynthesis.getVoices();
 
