@@ -48,8 +48,13 @@ function speak(text) {
   if (!('speechSynthesis' in window)) return;
   const u = new SpeechSynthesisUtterance(text);
   u.lang = 'en-US';
+  // Chrome/Edge에만 있는 음성이라, 없으면 기본 en-US 음성으로 자동 대체됨.
+  const voice = speechSynthesis.getVoices().find((v) => v.name === 'Google US English');
+  if (voice) u.voice = voice;
   speechSynthesis.speak(u);
 }
+// 음성 목록은 비동기로 로드되므로 미리 한 번 트리거해둔다(Chrome 계열).
+if ('speechSynthesis' in window) speechSynthesis.getVoices();
 
 function advance() {
   const w = todayWords[idx];
