@@ -19,6 +19,3 @@ python3 -m http.server 8934
 ## 배포
 GitHub Pages, 커스텀 도메인 `bite.metacog.co.kr` (`CNAME` 파일).
 Settings → Pages → Branch: `main` / `root` 로 설정.
-
-## AdSense
-`ca-pub-7930181419139524` (auto ads) 적용됨. `ads.txt`도 동일 pub-id로 맞춰둠.
