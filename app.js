@@ -19,7 +19,7 @@ const doneScreen = document.getElementById('doneScreen');
 const sessionScreen = document.getElementById('sessionScreen');
 const moreBtn = document.getElementById('moreBtn');
 
-streakEl.textContent = state.streak > 0 ? `🔥 ${state.streak}일 연속` : '';
+streakEl.textContent = state.streak > 0 ? `🔥 ${state.streak}일 연속 학습 중` : '';
 
 function render() {
   const w = todayWords[idx];
@@ -75,6 +75,7 @@ function finish() {
   sessionScreen.hidden = true;
   doneScreen.hidden = false;
   document.getElementById('doneStreak').textContent = state.streak;
+  document.getElementById('doneTotal').textContent = Object.keys(state.lastSeenAt).length;
 }
 
 cardEl.addEventListener('click', reveal);
